@@ -49,7 +49,8 @@ namespace NoFences
         {
             var family = new FontFamily("Segoe UI");
             titleFont = new Font(family, (int)Math.Floor(logicalTitleHeight / 2.0));
-            iconFont = new Font(family, 9);
+            // Increase the icon font size from 9 to 12 (or another desired value)
+            iconFont = new Font(family, 12, FontStyle.Regular, GraphicsUnit.Pixel);
         }
 
         public FenceWindow(FenceInfo fenceInfo)
@@ -257,11 +258,12 @@ namespace NoFences
             shouldRunDoubleClick = true;
             Refresh();
         }
-
+        
         private void FenceWindow_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.Clip = new Region(ClientRectangle);
-            e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            // Improve text rendering
+            e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
             // Background
